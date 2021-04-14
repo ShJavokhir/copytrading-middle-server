@@ -1,0 +1,17 @@
+{
+  "name": "copytrading-server",
+  "version": "1.0.0",
+  "description": "Websocket server for copytrading EA",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "ShJavokhir",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "zeromq": "^5.2.0"
+  }
+}
