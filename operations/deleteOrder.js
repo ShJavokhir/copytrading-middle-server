@@ -1,4 +1,4 @@
-const deleteOrder = (req, res, next)=>{
+const deleteOrder = (req, res, next, socket)=>{
     res.send("deleteOrder");
 }
 
