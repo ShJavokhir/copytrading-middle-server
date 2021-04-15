@@ -5,16 +5,18 @@ import dotenv from "dotenv";
 import {router, setSock} from "./controllers/operationsController.js";
 
 
+//configurations and initial settings
 const app = express();
 const sock = zmq.socket("pub");
-
 dotenv.config();
 app.use(bodyparser.json());
-
-
 //Max listeners can be set here
 sock.setMaxListeners(20);
-sock.bindSync("tcp://127.0.0.1:3000");
+
+
+//binding host and port
+sock.bindSync(process.env.SOCKET_HOST);
+
 setSock(sock);
 app.use("/operations", router );
 
@@ -26,9 +28,12 @@ app.use(function (err, req, res, next) {
   });
 });
 
+//404
 app.use((req, res, next) =>{
   res.sendStatus(404);
-})
-app.listen(80, ()=>{
-  console.log("Listening port 80");
+});
+
+//listening port (express)
+app.listen(process.env.PORT, ()=>{
+  console.log(`Listening port ${process.env.PORT}`);
 });
