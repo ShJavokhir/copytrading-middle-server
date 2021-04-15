@@ -4,6 +4,7 @@ import {openPendingOrder} from "../operations/openPendingOrder.js";
 import {modifyOrder} from "../operations/modifyOrder.js";
 import {deleteOrder} from "../operations/deleteOrder.js";
 import {closeOrder} from "../operations/closeOrder.js"
+import {authorization} from "../middlewares/authorization.js";
 
 const router = express.Router();
 
@@ -14,15 +15,7 @@ const setSock = (sock)=>{
     socket = sock
 }
 
-// setInterval(function() {
-    
-//     socket.send(["kitty cats", "meow!"]);
-//   }, 500);
-  
-
-// router.use("/",(req, res)=>{
-//     res.json(socket.listenerCount());
-// });
+router.use(authorization);
 
 router.post("/sendOrder", (req, res, next)=>{
     return sendOrder(req, res, next, socket);

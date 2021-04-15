@@ -1,13 +1,14 @@
 import express from "express";
 import zmq from "zeromq";
 import bodyparser from "body-parser"
-
+import dotenv from "dotenv";
 import {router, setSock} from "./controllers/operationsController.js";
 
 
 const app = express();
 const sock = zmq.socket("pub");
 
+dotenv.config();
 app.use(bodyparser.json());
 
 
@@ -23,12 +24,10 @@ app.use(function (err, req, res, next) {
     status: "fail😭",
     error: err.message,
   });
-  next();
 });
 
 app.use((req, res, next) =>{
   res.sendStatus(404);
-  
 })
 app.listen(80, ()=>{
   console.log("Listening port 80");
