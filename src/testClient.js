@@ -6,5 +6,5 @@ var sub = zmq.socket('sub');
  sub.subscribe('');  //herein lies the question
 
  sub.on('message',function(msg){
-        console.log('Received msg:',msg);
+        console.log('Received msg:',msg.toString());
  });

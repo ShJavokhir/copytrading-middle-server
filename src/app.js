@@ -8,7 +8,7 @@ import {router, setSock} from "./controllers/operationsController.js";
 const app = express();
 const sock = zmq.socket("pub");
 
-app.use(bodyparser.json);
+app.use(bodyparser.json());
 
 
 //Max listeners can be set here
@@ -17,10 +17,19 @@ sock.bindSync("tcp://127.0.0.1:3000");
 setSock(sock);
 app.use("/operations", router );
 
-app.use((req, res)=>{
-  res.sendStatus(404);
+app.use(function (err, req, res, next) {
+  const statusCode = err.code || 400;
+  res.status(statusCode).json({
+    status: "fail😭",
+    error: err.message,
+  });
+  next();
 });
 
+app.use((req, res, next) =>{
+  res.sendStatus(404);
+  
+})
 app.listen(80, ()=>{
   console.log("Listening port 80");
 });
