@@ -1,8 +1,7 @@
 import express from "express";
 import zmq from "zeromq";
 import dotenv from "dotenv";
-import {router, setSock} from "./controllers/operationsController.js";
-
+import { router, setSock } from "./controllers/operationsController.js";
 
 //configurations and initial settings
 const app = express();
@@ -12,18 +11,16 @@ app.use(express.json());
 //Max listeners can be set here
 sock.setMaxListeners(20);
 
-
 //binding host and port
 sock.bindSync(process.env.SOCKET_HOST);
 
-setInterval(function(){
+setInterval(function () {
   //console.log('sending a multipart message envelope');
   sock.send("aaa");
 }, 500);
 
-
 setSock(sock);
-app.use("/operations", router );
+app.use("/operations", router);
 
 app.use(function (err, req, res, next) {
   const statusCode = err.code || 400;
@@ -34,11 +31,11 @@ app.use(function (err, req, res, next) {
 });
 
 //404
-app.use((req, res, next) =>{
+app.use((req, res, next) => {
   res.sendStatus(404);
 });
 
 //listening port (express)
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT, () => {
   console.log(`Listening port ${process.env.PORT}`);
 });
