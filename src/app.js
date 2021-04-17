@@ -1,6 +1,5 @@
 import express from "express";
 import zmq from "zeromq";
-import bodyparser from "body-parser"
 import dotenv from "dotenv";
 import {router, setSock} from "./controllers/operationsController.js";
 
@@ -9,7 +8,7 @@ import {router, setSock} from "./controllers/operationsController.js";
 const app = express();
 const sock = zmq.socket("pub");
 dotenv.config();
-app.use(bodyparser.json());
+app.use(express.json());
 //Max listeners can be set here
 sock.setMaxListeners(20);
 

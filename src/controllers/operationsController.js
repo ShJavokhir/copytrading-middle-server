@@ -5,7 +5,7 @@ import {modifyOrder} from "../operations/modifyOrder.js";
 import {deleteOrder} from "../operations/deleteOrder.js";
 import {closeOrder} from "../operations/closeOrder.js"
 import {authorization} from "../middlewares/authorization.js";
-
+import {closePartialOrder} from "../operations/closePartialOrder.js"
 const router = express.Router();
 
 var socket;
@@ -32,7 +32,9 @@ router.post("/deleteOrder", (req, res, next)=>{
 router.post("/closeOrder", (req, res, next)=>{
     closeOrder(req, res, next, socket);
 });
-
+router.post("/closePartialOrder", (req, res, next)=>{
+    closePartialOrder(req, res, next, socket);
+});
 
 
 export {
