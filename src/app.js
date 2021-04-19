@@ -14,10 +14,10 @@ sock.setMaxListeners(20);
 //binding host and port
 sock.bindSync(process.env.SOCKET_HOST);
 
-setInterval(function () {
-  //console.log('sending a multipart message envelope');
-  sock.send("aaa");
-}, 500);
+// setInterval(function () {
+//   //console.log('sending a multipart message envelope');
+//   sock.send("aaa");
+// }, 500);
 
 setSock(sock);
 app.use("/operations", router);
