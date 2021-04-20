@@ -16,7 +16,7 @@ const sendOrder = (req, res, next, socket) => {
       orderLots: orderLots,
       orderSymbol: orderSymbol,
       orderOpenPrice: orderOpenPrice,
-      orderOpenTime: orderOpenTime,
+      actionTime: orderOpenTime,
       orderTp: orderTp,
       orderSl: orderSl,
     };

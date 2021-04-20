@@ -11,7 +11,7 @@ const modifyOrder = (req, res, next, socket) => {
       action: "orderModify",
       orderSymbol: orderSymbol,
       orderTicket: orderTicket,
-      orderModificationTime: orderModificationTime,
+      actionTime: orderModificationTime,
       orderOpenPrice: orderOpenPrice,
       orderTp: orderTp,
       orderSl: orderSl,

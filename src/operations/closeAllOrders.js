@@ -2,7 +2,7 @@ const closeAllOrders = (req, res, next, socket) => {
   const orderCloseTime = req.body.orderCloseTime;
   const responseJsonObject = {
     action: "orderCloseAll",
-    orderCloseTime: orderCloseTime,
+    actionTime: orderCloseTime,
   };
   socket.send(JSON.stringify(responseJsonObject));
   res.status(200);

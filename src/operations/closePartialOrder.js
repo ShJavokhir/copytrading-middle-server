@@ -13,7 +13,7 @@ const closePartialOrder = (req, res, next, socket) => {
       orderSymbol: orderSymbol,
       orderTicket: orderTicket,
       orderLots: orderLots,
-      orderModificationTime: orderModificationTime,
+      actionTime: orderModificationTime,
       orderOpenPrice: orderOpenPrice,
       orderTp: orderTp,
       orderSl: orderSl,

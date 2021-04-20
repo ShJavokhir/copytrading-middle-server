@@ -9,7 +9,7 @@ const closeOrder = (req, res, next, socket) => {
     orderTicket: orderTicket,
     orderType: orderType,
     orderSymbol: orderSymbol,
-    orderCloseTime: orderCloseTime,
+    actionTime: orderCloseTime,
   };
 
   socket.send(JSON.stringify(responseJsonObject));
